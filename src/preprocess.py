@@ -60,13 +60,15 @@ def prepare_features(df):
         'time_of_day_Night'
     ]
 
+    # Adding missing columns if any are, with 0
     for col in expected_cols:
         if col not in df.columns:
             df[col] = 0
 
+    # To ensure correct column order
     df = df[expected_cols]
 
-    # Scale
+    # Scaling numerical features
     numeric_cols = [
         'hours_worked_today',
         'continous_work_hours',
